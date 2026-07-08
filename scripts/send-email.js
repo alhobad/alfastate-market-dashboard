@@ -3,8 +3,9 @@ const PR_URL = process.env.PR_URL || '';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
 const EMAIL_SUBJECT = process.env.EMAIL_SUBJECT || 'Alfastate dashboard update ready';
 
-const TO_EMAIL = 'info@alfaestate.ca';
-const CC_EMAIL = 'alhousainy.bader@gmail.com';
+const TO_EMAIL = 'alhousainy.bader@gmail.com';
+const CC_EMAIL = '';
+const CC_LIST = CC_EMAIL ? [CC_EMAIL] : [];
 const DASHBOARD_URL = 'https://alfastate-market-dashboard.pages.dev/';
 
 if (!RESEND_API_KEY) {
@@ -32,7 +33,7 @@ async function main() {
     body: JSON.stringify({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
-      cc: [CC_EMAIL],
+      ...(CC_LIST.length ? { cc: CC_LIST } : {}),
       subject: EMAIL_SUBJECT,
       html,
     }),
