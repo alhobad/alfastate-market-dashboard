@@ -43,6 +43,7 @@ jobs:
           fi
 
       - name: Create Pull Request
+        id: pr
         if: steps.git-diff.outputs.changed == 'true' && github.event.inputs.dry-run != 'true'
         uses: peter-evans/create-pull-request@v7
         with:
@@ -61,3 +62,11 @@ jobs:
           branch: update/dashboard-${{ github.run_id }}
           base: main
           labels: automated-update
+
+      - name: Send email notification
+        if: steps.pr.outputs.pull-request-url != ''
+        run: node scripts/send-email.js
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          PR_URL: ${{ steps.pr.outputs.pull-request-url }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
