@@ -4,12 +4,10 @@ const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
 const EMAIL_SUBJECT = process.env.EMAIL_SUBJECT || 'Alfastate dashboard update ready';
 
 const TO_EMAIL = 'alhousainy.bader@gmail.com';
-const CC_EMAIL = '';
-const CC_LIST = CC_EMAIL ? [CC_EMAIL] : [];
 const DASHBOARD_URL = 'https://alfastate-market-dashboard.pages.dev/';
 
 if (!RESEND_API_KEY) {
-  console.error('❌ RESEND_API_KEY not set');
+  console.error('RESEND_API_KEY not set');
   process.exit(1);
 }
 
@@ -33,7 +31,6 @@ async function main() {
     body: JSON.stringify({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
-      ...(CC_LIST.length ? { cc: CC_LIST } : {}),
       subject: EMAIL_SUBJECT,
       html,
     }),
@@ -41,15 +38,15 @@ async function main() {
 
   if (!res.ok) {
     const body = await res.text();
-    console.error(`❌ Resend API error ${res.status}: ${body}`);
+    console.error(`Resend API error ${res.status}: ${body}`);
     process.exit(1);
   }
 
   const data = await res.json();
-  console.log(`✅ Email sent (id: ${data.id})`);
+  console.log(`Email sent (id: ${data.id})`);
 }
 
 main().catch(err => {
-  console.error(`❌ Email send failed: ${err.message}`);
+  console.error(`Email send failed: ${err.message}`);
   process.exit(1);
 });
