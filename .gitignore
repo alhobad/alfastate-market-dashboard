@@ -2,3 +2,7 @@ v1.1/
 index-standalone.html
 .claude/
 social/
+.DS_Store
+.netlify/
+node_modules/
+.env

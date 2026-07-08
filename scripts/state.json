@@ -1,0 +1,15 @@
+{
+  "lastRun": "2026-07-08",
+  "bocRate": 2.25,
+  "bocBankRate": 2.5,
+  "canPrimeRate": 4.45,
+  "canVariableRate": 3.25,
+  "canFixedRate": 3.94,
+  "usFedRate": 3.625,
+  "usFedRangeLow": 3.5,
+  "usFedRangeHigh": 3.75,
+  "us30yrRate": 6.43,
+  "us30yrPrevRate": 6.49,
+  "bocConsecutiveHolds": 7,
+  "fedMeetingNextWeek": true
+}

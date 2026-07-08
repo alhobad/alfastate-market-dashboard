@@ -1,0 +1,11 @@
+{
+  "name": "alfastate-market-dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update": "node scripts/update-dashboard.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
