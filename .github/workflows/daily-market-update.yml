@@ -9,6 +9,10 @@ on:
         description: 'Show changes without committing or creating PR'
         type: boolean
         default: false
+      send-test-email:
+        description: 'Send a test email without updating the dashboard'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -24,16 +28,26 @@ jobs:
         with:
           node-version: 22
 
+      - name: Send test email
+        if: github.event.inputs.send-test-email == 'true'
+        run: node scripts/send-email.js
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_SUBJECT: "TEST — Alfastate dashboard notification"
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+
       - name: Install dependencies
         run: npm install
 
       - name: Run dashboard update script
+        if: github.event.inputs.send-test-email != 'true'
         run: node scripts/update-dashboard.js
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           DRY_RUN: ${{ github.event.inputs.dry-run == 'true' && 'true' || '' }}
 
       - name: Check for changes
+        if: github.event.inputs.send-test-email != 'true'
         id: git-diff
         run: |
           if git diff --quiet -- index.html scripts/state.json; then
@@ -44,7 +58,7 @@ jobs:
 
       - name: Create Pull Request
         id: pr
-        if: steps.git-diff.outputs.changed == 'true' && github.event.inputs.dry-run != 'true'
+        if: steps.git-diff.outputs.changed == 'true' && github.event.inputs.dry-run != 'true' && github.event.inputs.send-test-email != 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,7 +78,7 @@ jobs:
           labels: automated-update
 
       - name: Send email notification
-        if: steps.pr.outputs.pull-request-url != ''
+        if: steps.pr.outputs.pull-request-url != '' && github.event.inputs.send-test-email != 'true'
         run: node scripts/send-email.js
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}

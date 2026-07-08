@@ -1,6 +1,7 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const PR_URL = process.env.PR_URL || '';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
+const EMAIL_SUBJECT = process.env.EMAIL_SUBJECT || 'Alfastate dashboard update ready';
 
 const TO_EMAIL = 'info@alfaestate.ca';
 const CC_EMAIL = 'alhousainy.bader@gmail.com';
@@ -32,7 +33,7 @@ async function main() {
       from: FROM_EMAIL,
       to: [TO_EMAIL],
       cc: [CC_EMAIL],
-      subject: 'Alfastate dashboard update ready',
+      subject: EMAIL_SUBJECT,
       html,
     }),
   });
