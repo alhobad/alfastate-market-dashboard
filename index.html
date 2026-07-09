@@ -1530,11 +1530,11 @@ For first-time buyers: affordability is improving in Peel and Durham, where aver
     </div>
     <div class="copilot-card">
       <div class="copilot-card-header">
-        <h4>Hook Generator</h4>
+        <h4>AI Hook Strategist</h4>
         <div class="copilot-card-icon">🎯</div>
       </div>
-      <p class="copilot-card-desc">Generate multiple attention-grabbing hooks tailored to today's market conditions to improve engagement on social media.</p>
-      <div class="copilot-card-text">Generate 10 Instagram hook ideas for today's real estate market update. Focus on: rate stability (BoC held at 2.25%, 7th consecutive hold), buyer confidence, GTA market trends (sales up 9% MoM, prices down 3.5% YoY). Tone: professional but approachable.</div>
+      <p class="copilot-card-desc">Analyze today's dashboard data and generate stronger hooks using proven real estate content patterns.</p>
+      <div class="copilot-card-text">Generate 25 original hook ideas using today's dashboard data. Inspiration sources: @serhant, @ryanserhant, @tatlondono, @brookelynnmortgages, @tampa_bre. Do NOT copy their wording. Browse for patterns if available, otherwise ask user to paste their captions. Rank top 10 hooks with performance reasoning and recommend format: Reel, Carousel, Story, or LinkedIn.</div>
       <button class="copilot-btn" onclick="copyPrompt(this, 1)">Copy Prompt</button>
     </div>
     <div class="copilot-card">
@@ -1600,6 +1600,7 @@ For first-time buyers: affordability is improving in Peel and Durham, where aver
       <div class="copilot-card-text">Generate a high-performance Instagram Reel script using educational creator communication patterns, using ONLY today's dashboard data. Includes hook, script, B-roll, captions, hashtags, and strategy notes.</div>
       <button class="copilot-btn" onclick="copyPrompt(this, 8)">Copy Prompt</button>
     </div>
+
   </div>
 
   <footer>
@@ -1753,12 +1754,63 @@ If you are weighing a renewal, a purchase, or want to understand what these numb
       'Use AlfaEstate brand colors: deep espresso #2E1C16, champagne gold #C9A96A, ivory #F7F2EA.\n' +
       'Keep slide copy short and readable at a glance.',
 
-      /* 1 Hook Generator */
-      'Generate 10 Instagram hook ideas for today\'s real estate market update.\n' +
-      'Mix these types: curiosity, urgency, educational, buyer-focused, seller-focused, and data-driven.\n' +
-      'Each hook must be rooted in today\'s actual data — not generic real estate tropes.\n' +
-      'Do not use clickbait. Each hook should earn the tap.\n' +
-      'Format: one hook per line, followed by a brief why-it-works note in parentheses.',
+      /* 1 AI Hook Strategist */
+      'You are a senior real estate content strategist at AlfaEstate.\n' +
+      'Your job is to generate original, high-performing social media hooks rooted in today\'s real dashboard data.\n' +
+      '\n' +
+      '🎯 INSPIRATION SOURCES (for pattern study only)\n' +
+      'These creators are highly effective at educational real estate content. Study their communication PATTERNS, not their words:\n' +
+      '  • @serhant (Ryan Serhant)\n' +
+      '  • @ryanserhant\n' +
+      '  • @tatlondono\n' +
+      '  • @brookelynnmortgages\n' +
+      '  • @tampa_bre\n' +
+      '\n' +
+      '⚠️ CRITICAL RULES\n' +
+      '1. Do NOT copy, paraphrase, or imitate any specific wording from these creators.\n' +
+      '2. If you have browsing capability, visit their profiles to study their recent content patterns.\n' +
+      '3. If browsing is NOT available, instruct the user to paste 5-10 recent captions/scripts from each creator so you can extract patterns.\n' +
+      '4. Extract communication PATTERNS only: pacing, structure, curiosity gaps, delivery style, audience engagement tactics — NOT content.\n' +
+      '5. Use ONLY today\'s AlfaEstate dashboard data (supplied above) for all facts and numbers.\n' +
+      '6. Do NOT fabricate statistics, dates, rates, sources, or market conditions.\n' +
+      '7. Keep hooks short, punchy, and original.\n' +
+      '\n' +
+      '📋 TASK\n' +
+      'Generate 25 original hook ideas based on today\'s dashboard data.\n' +
+      'Group hooks into the following 6 style categories (at least 3 per category, distribute naturally based on what today\'s data supports):\n' +
+      '\n' +
+      '  1. CURIOSITY HOOKS — gaps, questions, unexpected angles\n' +
+      '  2. BUYER-FOCUSED HOOKS — affordability, timing, rate relief, first-time tips\n' +
+      '  3. SELLER-FOCUSED HOOKS — pricing, demand, timing, seasonality\n' +
+      '  4. MORTGAGE/RATE HOOKS — BoC, fixed vs variable, cross-border comparison\n' +
+      '  5. CONTRARIAN HOOKS — challenge the conventional take, find the counter-narrative in today\'s data\n' +
+      '  6. EDUCATIONAL HOOKS — explain one concept simply using a real number from today\n' +
+      '\n' +
+      'Then:\n' +
+      '  ✅ Rank the TOP 10 strongest hooks across all categories.\n' +
+      '  ✅ For each of the top 10, explain in 1-2 sentences WHY it could perform well (what emotion or curiosity it triggers, who it targets, why it stops the scroll, what pattern inspired it).\n' +
+      '  ✅ For each of the top 10, recommend the best content format:\n' +
+      '     • Reel\n' +
+      '     • Carousel\n' +
+      '     • Story\n' +
+      '     • LinkedIn post\n' +
+      '\n' +
+      '🔍 PRE-WRITING ANALYSIS\n' +
+      'Before generating hooks:\n' +
+      '1. Scan the dashboard data above.\n' +
+      '2. Identify the single most surprising, useful, or counterintuitive number.\n' +
+      '3. Identify the biggest gap between public perception and actual data.\n' +
+      '4. Determine which audience (buyers, sellers, investors, or all) gets the most value from today\'s story.\n' +
+      '5. Determine which creator pattern fits best (e.g. Ryan Serhant\'s confidence + data, Tat Londono\'s storytelling, Brookelynn\'s educational clarity).\n' +
+      '6. Use that insight to anchor the strongest hooks.\n' +
+      '\n' +
+      '🚫 AVOID\n' +
+      '  • Generic real estate phrases ("now is the best time to buy")\n' +
+      '  • Clickbait that the data doesn\'t support\n' +
+      '  • Financial advice\n' +
+      '  • Exaggerated claims\n' +
+      '  • Copying any creator\'s hooks, phrases, or script structure\n' +
+      '  • Overused hook formulas (the "one trick", "nobody tells you", etc.)',
 
       /* 2 Reel Script */
       'Generate a 45–60 second Instagram Reel script for AlfaEstate.\n' +
