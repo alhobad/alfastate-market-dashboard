@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily market pulse — Alfastate</title>
+<title>AlfaEstate Market Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     /* === BRAND TOKENS — swap these to match alfastate.ca exactly === */
-    --brand-primary: #0B2540;     /* deep navy — replace with brand primary */
-    --brand-accent: #C9A24B;      /* warm gold — replace with brand accent */
-    --brand-accent-soft: #F3E9D2; /* light gold tint for fills */
+    --brand-primary: #2E1C16;     /* Deep Espresso Brown */
+    --brand-accent: #C9A96A;      /* Champagne Gold */
+    --brand-accent-soft: #E8D9C4; /* soft champagne tint for fills */
 
     /* Neutrals */
-    --bg-page: #F7F5F1;
+    --bg-page: #F7F2EA;
     --bg-card: #FFFFFF;
-    --bg-card-alt: #F1EEE7;
-    --text-primary: #15202B;
-    --text-secondary: #5C6670;
-    --text-tertiary: #9AA3AC;
-    --border-soft: rgba(11, 37, 64, 0.08);
-    --border-strong: rgba(11, 37, 64, 0.14);
+    --bg-card-alt: #F0EAE0;
+    --text-primary: #222222;
+    --text-secondary: #4A4A4A;
+    --text-tertiary: #8A8A8A;
+    --border-soft: rgba(46, 28, 22, 0.08);
+    --border-strong: rgba(46, 28, 22, 0.14);
 
     /* Semantic */
     --up: #B5482C;
@@ -76,26 +76,10 @@
     gap: 12px;
   }
 
-  .brand-mark {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: var(--brand-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 18px;
-    color: var(--brand-primary);
-    flex-shrink: 0;
-  }
-
-  .brand-name {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+  .brand-logo {
+    height: 44px;
+    width: auto;
+    display: block;
   }
 
   .brand-sub {
@@ -141,7 +125,7 @@
     z-index: 10;
     background: var(--bg-card);
     border-bottom: 1px solid var(--border-soft);
-    box-shadow: 0 4px 16px -8px rgba(11, 37, 64, 0.12);
+    box-shadow: 0 4px 16px -8px rgba(46, 28, 22, 0.12);
   }
 
   .section-nav-inner {
@@ -193,7 +177,7 @@
     padding: 40px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 12px 32px -16px rgba(11, 37, 64, 0.18);
+    box-shadow: 0 12px 32px -16px rgba(46, 28, 22, 0.18);
     margin-bottom: 40px;
   }
 
@@ -772,7 +756,7 @@
     position: absolute;
     top: 8px;
     left: 8px;
-    background: rgba(11, 37, 64, 0.7);
+    background: rgba(46, 28, 22, 0.7);
     color: #fff;
     font-size: 11px;
     font-weight: 600;
@@ -885,11 +869,8 @@
 <header>
   <div class="header-inner">
     <div class="brand">
-      <div class="brand-mark">A</div>
-      <div>
-        <div class="brand-name">Alfastate</div>
-        <div class="brand-sub">Daily market pulse</div>
-      </div>
+      <img src="assets/images/alfastate-logo.png" alt="AlfaEstate" class="brand-logo">
+      <div class="brand-sub">Daily market pulse</div>
     </div>
     <div class="header-meta">
       <div class="date" id="todayDate" data-field="header-date">Thursday, July 8, 2026 · 7:00 AM ET</div>
@@ -902,7 +883,7 @@
   <div class="section-nav-inner">
     <a href="#rates"><span class="nav-dot" style="background: var(--brand-primary);"></span>Market rates</a>
     <a href="#gta-snapshot"><span class="nav-dot" style="background: var(--brand-accent);"></span>GTA snapshot</a>
-    <a href="#marketing-kit"><span class="nav-dot" style="background: #7C90A8;"></span>Marketing kit</a>
+    <a href="#marketing-kit"><span class="nav-dot" style="background: #6B5340;"></span>Marketing kit</a>
   </div>
 </nav>
 
@@ -1041,37 +1022,37 @@
     <div class="gta-map-card">
       <svg viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg">
         <!-- Halton -->
-        <rect class="gta-region" x="20" y="160" width="110" height="100" rx="14" fill="#7C90A8"></rect>
+        <rect class="gta-region" x="20" y="160" width="110" height="100" rx="14" fill="#8B7355"></rect>
         <text class="gta-region-label" x="75" y="195" font-size="16">Halton</text>
         <text class="gta-region-sub" x="75" y="218" font-size="13">816 sales</text>
         <text class="gta-region-sub" x="75" y="236" font-size="13">$1.25M avg</text>
 
         <!-- Peel -->
-        <rect class="gta-region" x="140" y="140" width="120" height="140" rx="14" fill="#5E7593"></rect>
+        <rect class="gta-region" x="140" y="140" width="120" height="140" rx="14" fill="#6B5340"></rect>
         <text class="gta-region-label" x="200" y="195" font-size="16">Peel</text>
         <text class="gta-region-sub" x="200" y="218" font-size="13">1,106 sales</text>
         <text class="gta-region-sub" x="200" y="236" font-size="13">$956K avg</text>
 
         <!-- York -->
-        <rect class="gta-region" x="270" y="20" width="190" height="120" rx="14" fill="#3E5779"></rect>
+        <rect class="gta-region" x="270" y="20" width="190" height="120" rx="14" fill="#4A3728"></rect>
         <text class="gta-region-label" x="365" y="68" font-size="16">York</text>
         <text class="gta-region-sub" x="365" y="91" font-size="13">1,184 sales</text>
         <text class="gta-region-sub" x="365" y="109" font-size="13">$1.15M avg</text>
 
         <!-- Toronto (center, gold accent — largest market) -->
-        <rect class="gta-region" x="270" y="150" width="190" height="130" rx="14" fill="#C9A24B"></rect>
-        <text class="gta-region-label" x="365" y="198" font-size="16" fill="#0B2540">Toronto</text>
-        <text class="gta-region-sub" x="365" y="221" font-size="13" fill="rgba(11,37,64,0.7)">~2,673 sales*</text>
-        <text class="gta-region-sub" x="365" y="239" font-size="13" fill="rgba(11,37,64,0.7)">largest GTA market</text>
+        <rect class="gta-region" x="270" y="150" width="190" height="130" rx="14" fill="#C9A96A"></rect>
+        <text class="gta-region-label" x="365" y="198" font-size="16" fill="#2E1C16">Toronto</text>
+        <text class="gta-region-sub" x="365" y="221" font-size="13" fill="rgba(46,28,22,0.7)">~2,673 sales*</text>
+        <text class="gta-region-sub" x="365" y="239" font-size="13" fill="rgba(46,28,22,0.7)">largest GTA market</text>
 
         <!-- Durham -->
-        <rect class="gta-region" x="270" y="290" width="190" height="80" rx="14" fill="#28395A"></rect>
+        <rect class="gta-region" x="270" y="290" width="190" height="80" rx="14" fill="#3A2820"></rect>
         <text class="gta-region-label" x="365" y="325" font-size="16">Durham</text>
         <text class="gta-region-sub" x="365" y="348" font-size="13">804 sales · $851K avg</text>
       </svg>
       <div class="gta-legend">
         <div class="gta-legend-item"><span class="gta-legend-swatch" style="background: var(--brand-accent);"></span>Largest by volume</div>
-        <div class="gta-legend-item"><span class="gta-legend-swatch" style="background: #5E7593;"></span>905 regions</div>
+        <div class="gta-legend-item"><span class="gta-legend-swatch" style="background: #6B5340;"></span>905 regions</div>
       </div>
     </div>
 
@@ -1087,27 +1068,27 @@
         </thead>
         <tbody>
           <tr>
-            <td class="region-name"><span class="region-color-dot" style="background: #C9A24B;"></span>Toronto*</td>
+            <td class="region-name"><span class="region-color-dot" style="background: #C9A96A;"></span>Toronto*</td>
             <td>~2,673</td>
             <td>—</td>
           </tr>
           <tr>
-            <td class="region-name"><span class="region-color-dot" style="background: #3E5779;"></span>York</td>
+            <td class="region-name"><span class="region-color-dot" style="background: #4A3728;"></span>York</td>
             <td>1,184</td>
             <td>$1.15M</td>
           </tr>
           <tr>
-            <td class="region-name"><span class="region-color-dot" style="background: #5E7593;"></span>Peel</td>
+            <td class="region-name"><span class="region-color-dot" style="background: #6B5340;"></span>Peel</td>
             <td>1,106</td>
             <td>$956K</td>
           </tr>
           <tr>
-            <td class="region-name"><span class="region-color-dot" style="background: #7C90A8;"></span>Halton</td>
+            <td class="region-name"><span class="region-color-dot" style="background: #8B7355;"></span>Halton</td>
             <td>816</td>
             <td>$1.25M</td>
           </tr>
           <tr>
-            <td class="region-name"><span class="region-color-dot" style="background: #28395A;"></span>Durham</td>
+            <td class="region-name"><span class="region-color-dot" style="background: #3A2820;"></span>Durham</td>
             <td>804</td>
             <td>$851K</td>
           </tr>
@@ -1288,7 +1269,7 @@
   </details>
 
   <footer>
-    Generated daily at 7:00 AM ET for <span class="footer-brand">Alfastate</span> · Sources linked above
+    Generated daily at 7:00 AM ET for <span class="footer-brand">AlfaEstate</span> · Sources linked above
   </footer>
 
 </div>
