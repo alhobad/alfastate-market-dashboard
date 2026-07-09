@@ -3,7 +3,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { fetchAllRates } from './fetch-rates.js';
 import { fetchNews } from './fetch-news.js';
-import { buildPatches } from './templates.js';
+import { buildPatches, buildBankRatePatches } from './templates.js';
 import { buildNewsPatches } from './generate-content.js';
 import { readIndex, writeIndex, patchFields } from './patch-html.js';
 
@@ -33,7 +33,9 @@ function saveState(data) {
     us30yrRate: data.us30yrRate,
     us30yrPrevRate: data.us30yrPrevRate,
     bocConsecutiveHolds: data.bocConsecutiveHolds,
-    fedMeetingNextWeek: data.fedMeetingNextWeek
+    fedMeetingNextWeek: data.fedMeetingNextWeek,
+    bankRates: data.bankRates,
+    bankRatesDate: data.bankRatesDate
   };
   writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n', 'utf-8');
   return state;
@@ -83,6 +85,10 @@ async function main() {
   console.log(`   US 30yr mortgage:      ${currentData.us30yrRate}% (prev: ${currentData.us30yrPrevRate}%)`);
   console.log(`   Fed funds rate:        ${currentData.usFedRate || 'N/A'}%`);
   console.log(`   Fed meeting next wk:   ${currentData.fedMeetingNextWeek}`);
+  if (currentData.bankRates) {
+    const bankCount = Object.keys(currentData.bankRates).length;
+    console.log(`   Bank mortgage rates:   ${bankCount} lenders`);
+  }
 
   console.log('\n📰 Fetching Canadian real estate news...');
   const { articles: newsArticles, errors: newsErrors } = await fetchNews();
@@ -99,7 +105,8 @@ async function main() {
   console.log('\n📝 Generating patches...');
   const ratePatches = buildPatches(currentData);
   const newsPatches = buildNewsPatches(currentData, newsArticles);
-  const patches = { ...ratePatches, ...newsPatches };
+  const bankPatches = buildBankRatePatches(currentData);
+  const patches = { ...ratePatches, ...newsPatches, ...bankPatches };
 
   console.log(`   ${Object.keys(patches).length} fields to patch`);
 

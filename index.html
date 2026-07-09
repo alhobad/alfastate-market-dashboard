@@ -260,6 +260,91 @@
     color: var(--text-tertiary);
   }
 
+  /* Bank mortgage rates table */
+  .bank-rates-wrap {
+    margin-bottom: 40px;
+  }
+
+  .bank-rates-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .bank-rates-table th {
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .bank-rates-table th:not(:first-child),
+  .bank-rates-table td:not(:first-child) {
+    text-align: center;
+  }
+
+  .bank-rates-table td {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .bank-rates-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .bank-rates-table .lender-name {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bank-rates-table .lender-name .lender-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--border-strong);
+  }
+
+  .bank-rate-value {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .bank-rate-value.na {
+    color: var(--text-tertiary);
+  }
+
+  .bank-rate-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: var(--brand-accent);
+    color: var(--brand-primary);
+    line-height: 1.4;
+  }
+
+  .bank-rate-badge.best-var {
+    background: #2F6B4F;
+    color: #fff;
+  }
+
+  .bank-rates-source {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
   /* Content sections */
   .section {
     background: var(--bg-card);
@@ -861,6 +946,8 @@
     .gta-map-layout { grid-template-columns: 1fr; }
     .region-table-card { padding: 20px; }
     .region-table { font-size: 13px; }
+    .bank-rates-table { font-size: 13px; }
+    .bank-rates-table th, .bank-rates-table td { padding: 8px 4px; }
   }
 </style>
 </head>
@@ -914,6 +1001,57 @@
       <div class="metric-change neutral" data-field="fixed-desc">Best available · 5-yr</div>
       <div class="metric-note" data-field="fixed-note">Tracks bond yields, not BoC directly</div>
     </div>
+  </div>
+
+  <div class="bank-rates-wrap">
+    <div class="metric-group-label">🏦 Major Bank Mortgage Rates</div>
+    <table class="bank-rates-table">
+      <thead>
+        <tr>
+          <th>Lender</th>
+          <th>5‑yr fixed</th>
+          <th>5‑yr variable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="lender-name"><span class="lender-dot"></span>RBC</span></td>
+          <td><span class="bank-rate-value" data-field="bank-rbc-fixed">4.89%</span></td>
+          <td><span class="bank-rate-value" data-field="bank-rbc-variable">3.95%</span> <span class="bank-rate-badge best-var">Best variable</span></td>
+        </tr>
+        <tr>
+          <td><span class="lender-name"><span class="lender-dot"></span>TD</span></td>
+          <td><span class="bank-rate-value" data-field="bank-td-fixed">4.84%</span></td>
+          <td><span class="bank-rate-value" data-field="bank-td-variable">4.24%</span></td>
+        </tr>
+        <tr>
+          <td><span class="lender-name"><span class="lender-dot"></span>BMO</span></td>
+          <td><span class="bank-rate-value" data-field="bank-bmo-fixed">4.74%</span></td>
+          <td><span class="bank-rate-value" data-field="bank-bmo-variable">4.10%</span></td>
+        </tr>
+        <tr>
+          <td><span class="lender-name"><span class="lender-dot"></span>Scotiabank</span></td>
+          <td><span class="bank-rate-value na" data-field="bank-scotiabank-fixed">—</span></td>
+          <td><span class="bank-rate-value na" data-field="bank-scotiabank-variable">—</span></td>
+        </tr>
+        <tr>
+          <td><span class="lender-name"><span class="lender-dot"></span>CIBC</span></td>
+          <td><span class="bank-rate-value" data-field="bank-cibc-fixed">4.64%</span> <span class="bank-rate-badge">Best fixed</span></td>
+          <td><span class="bank-rate-value" data-field="bank-cibc-variable">3.95%</span> <span class="bank-rate-badge best-var">Best variable</span></td>
+        </tr>
+        <tr>
+          <td><span class="lender-name"><span class="lender-dot"></span>National Bank</span></td>
+          <td><span class="bank-rate-value" data-field="bank-national-bank-fixed">4.69%</span></td>
+          <td><span class="bank-rate-value" data-field="bank-national-bank-variable">4.10%</span></td>
+        </tr>
+        <tr>
+          <td><span class="lender-name"><span class="lender-dot"></span>Tangerine</span></td>
+          <td><span class="bank-rate-value" data-field="bank-tangerine-fixed">4.49%</span> <span class="bank-rate-badge">Best fixed</span></td>
+          <td><span class="bank-rate-value" data-field="bank-tangerine-variable">4.00%</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bank-rates-source" data-field="bank-rates-source">Source: WOWA.ca · 2026-07-09</div>
   </div>
 
   <div class="metric-group-label">🇺🇸 United States</div>

@@ -184,7 +184,48 @@ export async function fetchAllRates(prevState) {
 
   result.fedMeetingNextWeek = isFedMeetingWeek();
 
+  try {
+    const bankRates = await fetchBankMortgageRates();
+    result.bankRates = bankRates;
+    result.bankRatesDate = new Date().toISOString().slice(0, 10);
+  } catch (e) {
+    errors.push(`Bank mortgage rates: ${e.message}`);
+    result.bankRates = prevState.bankRates || {};
+    result.bankRatesDate = prevState.bankRatesDate || null;
+  }
+
   result.lastRun = new Date().toISOString().slice(0, 10);
 
   return { data: result, errors };
+}
+
+const BANK_LENDERS = ['TD', 'RBC', 'BMO', 'CIBC', 'Scotiabank', 'National Bank', 'Tangerine'];
+
+export async function fetchBankMortgageRates() {
+  const data = await fetchJSON('https://wowa.ca/api/backend/mortgage/rates');
+  const bankRates = {};
+
+  for (const lender of BANK_LENDERS) {
+    const entries = data.filter(e =>
+      e.source === lender && (e.year === 5 || e.year === 5.0)
+    );
+
+    const fixedSpecial = entries
+      .filter(e => e.type === 'fixed' && e.posted === false)
+      .sort((a, b) => a.rate - b.rate)[0];
+    const varSpecial = entries
+      .filter(e => e.type === 'variable' && e.posted === false)
+      .sort((a, b) => a.rate - b.rate)[0];
+    const fixedPosted = entries.find(e => e.type === 'fixed' && e.posted === true);
+    const varPosted = entries.find(e => e.type === 'variable' && e.posted === true);
+
+    bankRates[lender] = {
+      fixed5: fixedSpecial ? fixedSpecial.rate : null,
+      variable5: varSpecial ? varSpecial.rate : null,
+      postedFixed5: fixedPosted ? fixedPosted.rate : null,
+      postedVariable5: varPosted ? varPosted.rate : null,
+    };
+  }
+
+  return bankRates;
 }

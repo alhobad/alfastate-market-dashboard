@@ -11,5 +11,50 @@
   "us30yrRate": 6.43,
   "us30yrPrevRate": 6.49,
   "bocConsecutiveHolds": 7,
-  "fedMeetingNextWeek": true
+  "fedMeetingNextWeek": true,
+  "bankRates": {
+    "TD": {
+      "fixed5": 4.84,
+      "variable5": 4.24,
+      "postedFixed5": 6.09,
+      "postedVariable5": null
+    },
+    "RBC": {
+      "fixed5": 4.89,
+      "variable5": 3.95,
+      "postedFixed5": 6.09,
+      "postedVariable5": null
+    },
+    "BMO": {
+      "fixed5": 4.74,
+      "variable5": 4.1,
+      "postedFixed5": 6.09,
+      "postedVariable5": 4.45
+    },
+    "CIBC": {
+      "fixed5": 4.64,
+      "variable5": 3.95,
+      "postedFixed5": 6.49,
+      "postedVariable5": 4.45
+    },
+    "Scotiabank": {
+      "fixed5": null,
+      "variable5": null,
+      "postedFixed5": 6.09,
+      "postedVariable5": 4.9
+    },
+    "National Bank": {
+      "fixed5": 4.69,
+      "variable5": 4.1,
+      "postedFixed5": 6.09,
+      "postedVariable5": 4.45
+    },
+    "Tangerine": {
+      "fixed5": 4.49,
+      "variable5": 4,
+      "postedFixed5": null,
+      "postedVariable5": null
+    }
+  },
+  "bankRatesDate": "2026-07-09"
 }

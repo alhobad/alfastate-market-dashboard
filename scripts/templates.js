@@ -172,4 +172,21 @@ function buildPatches(data) {
   return patches;
 }
 
-export { buildPatches, fedMeetingNote, ordinal, selectTemplate, interpolate };
+function buildBankRatePatches(data) {
+  const rates = data.bankRates || {};
+  const path = {};
+
+  for (const [lender, r] of Object.entries(rates)) {
+    const key = lender.toLowerCase().replace(/\s+/g, '-');
+    path[`bank-${key}-fixed`] = r.fixed5 != null ? `${r.fixed5.toFixed(2)}%` : '—';
+    path[`bank-${key}-variable`] = r.variable5 != null ? `${r.variable5.toFixed(2)}%` : '—';
+  }
+
+  path['bank-rates-source'] = data.bankRatesDate
+    ? `Source: WOWA.ca · ${data.bankRatesDate}`
+    : 'Source: WOWA.ca';
+
+  return path;
+}
+
+export { buildPatches, buildBankRatePatches, fedMeetingNote, ordinal, selectTemplate, interpolate };
