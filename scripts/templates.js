@@ -172,4 +172,4 @@ function buildPatches(data) {
   return patches;
 }
 
-export { buildPatches, fedMeetingNote, ordinal };
+export { buildPatches, fedMeetingNote, ordinal, selectTemplate, interpolate };

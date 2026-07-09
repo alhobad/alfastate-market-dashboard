@@ -2,7 +2,9 @@ import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { fetchAllRates } from './fetch-rates.js';
+import { fetchNews } from './fetch-news.js';
 import { buildPatches } from './templates.js';
+import { buildNewsPatches } from './generate-content.js';
 import { readIndex, writeIndex, patchFields } from './patch-html.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -65,9 +67,11 @@ async function main() {
     // BoC just cut — reset consecutive holds counter
     currentData.bocConsecutiveHolds = 1;
   } else if (bocChanged && currentData.bocRate > (prevState.bocRate || 0)) {
+    // BoC just hiked — reset consecutive holds counter
     currentData.bocConsecutiveHolds = 1;
   } else if (prevState.bocRate !== undefined) {
-    currentData.bocConsecutiveHolds = (prevState.bocConsecutiveHolds || 0) + 1;
+    // Rate unchanged — preserve previous hold count (BoC meets ~8x/year, don't auto-increment)
+    currentData.bocConsecutiveHolds = prevState.bocConsecutiveHolds || 0;
   } else {
     currentData.bocConsecutiveHolds = currentData.bocConsecutiveHolds || 5;
   }
@@ -80,8 +84,22 @@ async function main() {
   console.log(`   Fed funds rate:        ${currentData.usFedRate || 'N/A'}%`);
   console.log(`   Fed meeting next wk:   ${currentData.fedMeetingNextWeek}`);
 
+  console.log('\n📰 Fetching Canadian real estate news...');
+  const { articles: newsArticles, errors: newsErrors } = await fetchNews();
+
+  if (newsErrors.length > 0) {
+    console.log('\n⚠ Warnings during news fetch:');
+    for (const e of newsErrors) {
+      console.log(`   - ${e}`);
+    }
+  }
+
+  console.log(`   ${newsArticles.length} articles matched topic filters`);
+
   console.log('\n📝 Generating patches...');
-  const patches = buildPatches(currentData);
+  const ratePatches = buildPatches(currentData);
+  const newsPatches = buildNewsPatches(currentData, newsArticles);
+  const patches = { ...ratePatches, ...newsPatches };
 
   console.log(`   ${Object.keys(patches).length} fields to patch`);
 
