@@ -928,6 +928,93 @@
     margin-top: 16px;
   }
 
+  /* AI Content Copilot */
+  .copilot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .copilot-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .copilot-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .copilot-card-header h4 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .copilot-card-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--brand-primary);
+    color: var(--brand-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .copilot-card-desc {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .copilot-card-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .copilot-btn {
+    align-self: flex-start;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    background: var(--bg-card);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .copilot-btn:hover {
+    background: var(--brand-accent-soft);
+    border-color: var(--brand-accent);
+  }
+
+  .copilot-btn.copied {
+    background: #2F6B4F;
+    color: #fff;
+    border-color: #2F6B4F;
+  }
+
   /* Responsive */
   @media (max-width: 760px) {
     .metrics { grid-template-columns: 1fr; }
@@ -948,6 +1035,7 @@
     .region-table { font-size: 13px; }
     .bank-rates-table { font-size: 13px; }
     .bank-rates-table th, .bank-rates-table td { padding: 8px 4px; }
+    .copilot-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -971,6 +1059,7 @@
     <a href="#rates"><span class="nav-dot" style="background: var(--brand-primary);"></span>Market rates</a>
     <a href="#gta-snapshot"><span class="nav-dot" style="background: var(--brand-accent);"></span>GTA snapshot</a>
     <a href="#marketing-kit"><span class="nav-dot" style="background: #6B5340;"></span>Marketing kit</a>
+    <a href="#ai-copilot"><span class="nav-dot" style="background: #C9A96A;"></span>AI Copilot</a>
   </div>
 </nav>
 
@@ -1413,6 +1502,106 @@ For first-time buyers: affordability is improving in Peel and Durham, where aver
     </div>
   </details>
 
+  <div class="scroll-hint">
+    <a href="#ai-copilot">
+      Try the AI Content Copilot
+      <span aria-hidden="true">↓</span>
+    </a>
+  </div>
+
+  <div class="section-divider" id="ai-copilot">
+    <div class="divider-label">AI Content Copilot</div>
+    <div class="line"></div>
+  </div>
+
+  <div class="social-intro">
+    <p>Ready-to-copy AI prompts for real estate content creation. Each prompt references today's market data — rates, GTA snapshot, commentary, and bank rates — so you can generate posts, scripts, and client content in seconds.</p>
+  </div>
+
+  <div class="copilot-grid">
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>Carousel Prompt</h4>
+        <div class="copilot-card-icon">📷</div>
+      </div>
+      <p class="copilot-card-desc">Create a complete 6-slide Instagram carousel using today's live market data. Perfect for weekly market updates and educational content.</p>
+      <div class="copilot-card-text">Generate a 6-slide Instagram carousel from today's market update. Hook: "Canada Holds Steady." Slides: rate snapshot (BoC 2.25%, variable 3.25%, fixed 3.94%), bank comparison, GTA snapshot (sales up 9%, prices down 3.5%), buyer insight, CTA. Use AlfaEstate brand colors.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 0)">Copy Prompt</button>
+    </div>
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>Hook Generator</h4>
+        <div class="copilot-card-icon">🎯</div>
+      </div>
+      <p class="copilot-card-desc">Generate multiple attention-grabbing hooks tailored to today's market conditions to improve engagement on social media.</p>
+      <div class="copilot-card-text">Generate 10 Instagram hook ideas for today's real estate market update. Focus on: rate stability (BoC held at 2.25%, 7th consecutive hold), buyer confidence, GTA market trends (sales up 9% MoM, prices down 3.5% YoY). Tone: professional but approachable.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 1)">Copy Prompt</button>
+    </div>
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>Reel Script Prompt</h4>
+        <div class="copilot-card-icon">🎬</div>
+      </div>
+      <p class="copilot-card-desc">Turn today's market update into a natural 45–60 second Instagram Reel that educates buyers and sellers.</p>
+      <div class="copilot-card-text">Write a 45-60 second Instagram Reel script explaining why the BoC held rates at 2.25% and what it means for GTA homebuyers. Opening hook, 3 key points (rate stability, GTA sales rebound, cross-border comparison), CTA to follow AlfaEstate.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 2)">Copy Prompt</button>
+    </div>
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>Listing Description Prompt</h4>
+        <div class="copilot-card-icon">🏠</div>
+      </div>
+      <p class="copilot-card-desc">Create a compelling, professional property description by combining your listing details with AlfaEstate's premium tone.</p>
+      <div class="copilot-card-text">Write a luxury real estate listing description for a modern 4-bedroom home in Toronto. Highlight: open-concept layout, chef's kitchen with premium finishes, primary suite with walk-in closet, walkout basement, close to transit and schools. 150 words. Professional, aspirational tone.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 3)">Copy Prompt</button>
+    </div>
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>Buyer Education Prompt</h4>
+        <div class="copilot-card-icon">📘</div>
+      </div>
+      <p class="copilot-card-desc">Explain today's market in simple language that helps buyers understand what matters and what to do next.</p>
+      <div class="copilot-card-text">Write an educational Instagram carousel for first-time homebuyers explaining how fixed vs variable mortgage rates work, what the BoC rate hold at 2.25% means for them, and why regions like Peel and Durham offer better affordability (prices below $900K). Simple, approachable language.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 4)">Copy Prompt</button>
+    </div>
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>Seller Education Prompt</h4>
+        <div class="copilot-card-icon">📊</div>
+      </div>
+      <p class="copilot-card-desc">Create educational content that helps homeowners understand pricing, timing, demand, and current market conditions.</p>
+      <div class="copilot-card-text">Create educational content for sellers explaining: current GTA market conditions (stable rates, rising sales, supply tightening), pricing strategy in a stable rate environment, staging tips to maximize perceived value, and why listing this summer captures motivated buyers before the fall season.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 5)">Copy Prompt</button>
+    </div>
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>Newsletter Prompt</h4>
+        <div class="copilot-card-icon">✉️</div>
+      </div>
+      <p class="copilot-card-desc">Transform today's dashboard into a polished client newsletter with subject lines, sections, and a clear call-to-action.</p>
+      <div class="copilot-card-text">Write a weekly market newsletter for AlfaEstate clients. Sections: BoC rate update (2.25% hold), GTA market snapshot (sales, prices, listings), cross-border comparison (US 30yr at 6.43%), buyer/seller tip for the week, and a featured listing. Professional yet warm tone. Keep it actionable.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 6)">Copy Prompt</button>
+    </div>
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>Follow-up Message Prompt</h4>
+        <div class="copilot-card-icon">💬</div>
+      </div>
+      <p class="copilot-card-desc">Generate personalized follow-up emails or SMS messages for buyer leads, seller leads, open houses, or recent inquiries.</p>
+      <div class="copilot-card-text">Write a warm client follow-up message for a buyer who attended an open house this weekend. Ask about their experience, mention that rates are stable (BoC held at 2.25%), offer to run updated numbers based on their needs, and invite them to tour similar properties. Keep it personal, not salesy.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 7)">Copy Prompt</button>
+    </div>
+    <div class="copilot-card">
+      <div class="copilot-card-header">
+        <h4>High-Performance Reel Generator</h4>
+        <div class="copilot-card-icon">🚀</div>
+      </div>
+      <p class="copilot-card-desc">Generate a high-performing Reel inspired by the communication patterns of top educational real estate creators while remaining completely original.</p>
+      <div class="copilot-card-text">Generate a high-performance Instagram Reel script using educational creator communication patterns, using ONLY today's dashboard data. Includes hook, script, B-roll, captions, hashtags, and strategy notes.</div>
+      <button class="copilot-btn" onclick="copyPrompt(this, 8)">Copy Prompt</button>
+    </div>
+  </div>
+
   <footer>
     Generated daily at 7:00 AM ET for <span class="footer-brand">AlfaEstate</span> · Sources linked above
   </footer>
@@ -1446,6 +1635,261 @@ If you are weighing a renewal, a purchase, or want to understand what these numb
   function copyDailyTipScript() {
     const text = "If you're a landlord in Ontario, this rule change could save you weeks.\n\nUnder Bill 60, the N4 notice period for unpaid rent dropped from 14 days to 7. That means if a tenant falls behind, you can move toward an LTB application a full week earlier than before. Just make sure the notice itself is filled out correctly — a defective N4 can set you right back to square one.\n\nWant help reviewing your lease or notice templates? Send me a message.";
     copyToClipboard(text, 'copyDailyTipBtn');
+  }
+
+  function collectDashboardData() {
+    function g(n) {
+      var el = document.querySelector('[data-field="' + n + '"]');
+      return el ? el.textContent.trim() : '';
+    }
+
+    var gtaCards = document.querySelectorAll('.gta-summary .metric-card');
+    var gta = {};
+    if (gtaCards.length >= 3) {
+      gta.sales = gtaCards[0].querySelector('.metric-value') ? gtaCards[0].querySelector('.metric-value').textContent.trim() : '';
+      gta.salesChange = gtaCards[0].querySelector('.metric-change') ? gtaCards[0].querySelector('.metric-change').textContent.trim() : '';
+      gta.avgPrice = gtaCards[1].querySelector('.metric-value') ? gtaCards[1].querySelector('.metric-value').textContent.trim() : '';
+      gta.avgPriceChange = gtaCards[1].querySelector('.metric-change') ? gtaCards[1].querySelector('.metric-change').textContent.trim() : '';
+      gta.newListings = gtaCards[2].querySelector('.metric-value') ? gtaCards[2].querySelector('.metric-value').textContent.trim() : '';
+      gta.newListingsChange = gtaCards[2].querySelector('.metric-change') ? gtaCards[2].querySelector('.metric-change').textContent.trim() : '';
+    }
+
+    var bankIds = ['rbc', 'td', 'bmo', 'scotiabank', 'cibc', 'national-bank', 'tangerine'];
+    var bankLabels = ['RBC', 'TD', 'BMO', 'Scotiabank', 'CIBC', 'National Bank', 'Tangerine'];
+    var banks = [];
+    for (var i = 0; i < bankIds.length; i++) {
+      var fixed = g('bank-' + bankIds[i] + '-fixed');
+      var variable = g('bank-' + bankIds[i] + '-variable');
+      if (fixed || variable) {
+        banks.push({ name: bankLabels[i], fixed: fixed, variable: variable });
+      }
+    }
+
+    return {
+      headline: g('headline'),
+      lede: g('lede'),
+      boc: { rate: g('boc-rate'), status: g('boc-status'), next: g('boc-next') },
+      variable: { rate: g('variable-rate'), desc: g('variable-desc'), note: g('variable-note') },
+      fixed: { rate: g('fixed-rate'), desc: g('fixed-desc'), note: g('fixed-note') },
+      fed: { rate: g('fed-rate'), status: g('fed-status'), note: g('fed-note') },
+      us30yr: { rate: g('us-30yr-rate'), change: g('us-30yr-change'), note: g('us-30yr-note') },
+      banks: banks,
+      briefing: { p1: g('briefing-p1'), p2: g('briefing-p2') },
+      impact: { p1: g('impact-p1'), p2: g('impact-p2') },
+      weekly: { hook: g('weekly-hook'), body: g('weekly-body'), cta: g('weekly-cta') },
+      gta: gta
+    };
+  }
+
+  function buildPromptContext(d) {
+    var ctx = '── Today\'s AlfaEstate Market Data ──\n\n';
+    ctx += 'Headline: ' + d.headline + '\n';
+    ctx += 'Lede: ' + d.lede + '\n\n';
+
+    ctx += '🇨🇦 Canada\n';
+    ctx += '  BoC Rate: ' + d.boc.rate + ' (' + d.boc.status + ')\n';
+    ctx += '  Next Decision: ' + d.boc.next + '\n';
+    ctx += '  Best Variable (5-yr): ' + d.variable.rate + ' — ' + d.variable.note + '\n';
+    ctx += '  Best Fixed (5-yr): ' + d.fixed.rate + ' — ' + d.fixed.note + '\n\n';
+
+    ctx += '🏦 Major Bank Special Rates\n';
+    for (var i = 0; i < d.banks.length; i++) {
+      var b = d.banks[i];
+      ctx += '  ' + b.name + ': ' + (b.fixed !== '—' && b.fixed ? 'Fixed ' + b.fixed : 'Fixed —') + ' / ' + (b.variable !== '—' && b.variable ? 'Variable ' + b.variable : 'Variable —') + '\n';
+    }
+    ctx += '\n';
+
+    ctx += '🇺🇸 United States\n';
+    ctx += '  Fed Funds Rate: ' + d.fed.rate + ' (' + d.fed.status + ')\n';
+    ctx += '  30-yr Mortgage Avg: ' + d.us30yr.rate + ' (' + d.us30yr.change + ')\n';
+    ctx += '  Note: ' + d.us30yr.note + '\n\n';
+
+    ctx += '📍 GTA Snapshot (May 2026)\n';
+    ctx += '  Home Sales: ' + d.gta.sales + ' (' + d.gta.salesChange + ')\n';
+    ctx += '  Avg Price: ' + d.gta.avgPrice + ' (' + d.gta.avgPriceChange + ')\n';
+    ctx += '  New Listings: ' + d.gta.newListings + ' (' + d.gta.newListingsChange + ')\n\n';
+
+    ctx += '📰 Market Briefing\n';
+    ctx += '  ' + d.briefing.p1 + '\n';
+    ctx += '  ' + d.briefing.p2 + '\n\n';
+
+    ctx += '📋 Weekly Roundup (Marketing Kit)\n';
+    ctx += '  Hook: ' + d.weekly.hook + '\n';
+    ctx += '  CTA: ' + d.weekly.cta + '\n';
+
+    return ctx;
+  }
+
+  function copyPrompt(btn, idx) {
+    var d = collectDashboardData();
+    var context = buildPromptContext(d);
+
+    var preamble =
+      '\n\n── System Instructions ──\n' +
+      'You are a senior real estate marketing strategist at AlfaEstate.\n' +
+      'Rules:\n' +
+      '1. Use ONLY the dashboard data supplied above. Never fabricate statistics, dates, sources, or rates.\n' +
+      '2. Generate fresh wording every time. Do not repeat the dashboard headline verbatim unless it is the strongest possible hook.\n' +
+      '3. Automatically identify the biggest market movement in today\'s data. Prioritize the most important story:\n' +
+      '   - rates if a rate changed meaningfully\n' +
+      '   - GTA sales/prices if market activity shifted\n' +
+      '   - buyer/seller impact if the market is stable\n' +
+      '   - bank comparison if lender rates are the most actionable insight\n' +
+      '4. Use the Market Commentary section as your primary narrative. Use numerical data as supporting evidence.\n' +
+      '5. Write clearly, conversationally, and usefully for real buyers and sellers.\n' +
+      '6. Avoid generic AI filler, exaggerated claims, and financial advice.\n';
+
+    var bases = [
+      /* 0 Carousel */
+      'Generate a 6-slide Instagram carousel for AlfaEstate.\n' +
+      'Slide structure:\n' +
+      '  1. Hook — bold, curiosity-driven opener based on the biggest story\n' +
+      '  2. Key Update — the single most important market movement today\n' +
+      '  3. Rate Snapshot — BoC, variable, fixed, US 30yr (use actual numbers)\n' +
+      '  4. What Changed — highlight the one shift that matters most\n' +
+      '  5. What This Means — practical takeaway for buyers or sellers\n' +
+      '  6. CTA — visit AlfaEstate, DM, or share\n' +
+      'Include a visual direction note per slide (e.g. "bold headline over dark gradient", "bar chart comparing fixed vs variable").\n' +
+      'Use AlfaEstate brand colors: deep espresso #2E1C16, champagne gold #C9A96A, ivory #F7F2EA.\n' +
+      'Keep slide copy short and readable at a glance.',
+
+      /* 1 Hook Generator */
+      'Generate 10 Instagram hook ideas for today\'s real estate market update.\n' +
+      'Mix these types: curiosity, urgency, educational, buyer-focused, seller-focused, and data-driven.\n' +
+      'Each hook must be rooted in today\'s actual data — not generic real estate tropes.\n' +
+      'Do not use clickbait. Each hook should earn the tap.\n' +
+      'Format: one hook per line, followed by a brief why-it-works note in parentheses.',
+
+      /* 2 Reel Script */
+      'Generate a 45–60 second Instagram Reel script for AlfaEstate.\n' +
+      'Structure:\n' +
+      '  Hook (0-5s) — stop the scroll with today\'s most surprising or useful number\n' +
+      '  Body (5-45s) — walk through the data conversationally: what happened, why it matters, who it affects\n' +
+      '  CTA (45-60s) — direct viewer to AlfaEstate for personalized advice\n' +
+      'Make it conversational and agent-friendly — like a smart colleague explaining the week over coffee.\n' +
+      'Include on-screen text suggestions in brackets.',
+
+      /* 3 Listing Description */
+      'Write a luxury real estate listing description using the AlfaEstate brand voice: premium, clear, not exaggerated.\n' +
+      'Since the user will paste specific property details, use this template structure:\n' +
+      '  [Opening line — neighborhood hook]\n' +
+      '  [Key features — 3-4 bullets, finishes, layout, light, outdoor space]\n' +
+      '  [Lifestyle paragraph — who this home is for]\n' +
+      '  [Agent note — what makes this listing special right now]\n' +
+      'Keep it 120-150 words. Do not use words like "stunning," "best," or "unbeatable."',
+
+      /* 4 Buyer Education */
+      'Write an educational Instagram carousel for first-time homebuyers (4-5 slides).\n' +
+      'Explain today\'s market in simple, buyer-friendly language:\n' +
+      '  Slide 1: Where rates are right now — BoC at ' + d.boc.rate + ', variable vs fixed in plain English\n' +
+      '  Slide 2: What the BoC hold means for monthly payments\n' +
+      '  Slide 3: Where affordability is improving — Peel, Durham, and other 905 regions\n' +
+      '  Slide 4: What buyers should watch next (next BoC date, bond yield trends, inventory)\n' +
+      '  Slide 5: CTA — get pre-approved, talk to an AlfaEstate advisor\n' +
+      'No jargon. No fear. Just clear, useful information.',
+
+      /* 5 Seller Education */
+      'Create educational content for sellers.\n' +
+      'Cover these questions honestly using today\'s data:\n' +
+      '  - What is the current pricing environment? (reference GTA avg price trend)\n' +
+      '  - Is demand strong enough to list now? (reference sales volume and inventory)\n' +
+      '  - How should they price in a stable-rate market?\n' +
+      '  - What timing strategy makes sense this summer vs fall?\n' +
+      'Do not promise a quick sale or a certain price. Frame everything as market intelligence the seller can use to make their own decision.',
+
+      /* 6 Newsletter */
+      'Turn today\'s dashboard into a polished client newsletter.\n' +
+      'Structure:\n' +
+      '  Subject line: provide 3 options (data-driven, benefit-driven, curiosity-driven)\n' +
+      '  Intro: 1-2 sentences anchored to the biggest story\n' +
+      '  Section 1 — Rate Update: BoC, variable, fixed, US comparison\n' +
+      '  Section 2 — GTA Market Snapshot: sales, prices, inventory, regional highlights\n' +
+      '  Section 3 — Buyer/Seller Tip: one actionable takeaway for each\n' +
+      '  Section 4 — What\'s Next: upcoming BoC date, market signals to watch\n' +
+      '  CTA: book a consultation, reply with questions\n' +
+      'Tone: professional yet warm. Write as if addressing a client directly, not a mass audience.',
+
+      /* 7 Follow-up Message */
+      'Generate short follow-up message options (SMS or email length) using today\'s market context.\n' +
+      'Provide 4 options, each 2-4 sentences:\n' +
+      '  1. Buyer lead follow-up — reconnect after an open house, mention rates are stable at ' + d.boc.rate + ', offer updated numbers\n' +
+      '  2. Seller lead follow-up — share one relevant GTA data point that supports listing now\n' +
+      '  3. Showing follow-up — thank the client, ask for feedback, reference a specific home if possible\n' +
+      '  4. Market pulse check — brief check-in with past client, share one useful stat without pressure\n' +
+      'Keep each option personal, not salesy. Write like a realtor following up with a real person, not a CRM template.',
+
+      /* 8 High-Performance Reel Generator */
+      'You are a senior real estate content strategist.\n' +
+      'Your job is to create original educational content for AlfaEstate.\n' +
+      'Use ONLY the dashboard data supplied above.\n' +
+      'Never invent statistics, mortgage rates, dates or market information.\n' +
+      'Never copy or imitate any creator\'s wording.\n' +
+      'Instead, study and apply the communication patterns commonly found in high-performing educational real estate creators such as:\n' +
+      '  • SERHANT\n' +
+      '  • Ryan Serhant\n' +
+      '  • Tat Londono\n' +
+      '  • Brookelynn Mortgages\n' +
+      '  • Tampa BRE\n' +
+      'Use only the following characteristics from those creators:\n' +
+      '  • Strong first three seconds\n' +
+      '  • Curiosity-driven opening\n' +
+      '  • Educational storytelling\n' +
+      '  • Fast pacing\n' +
+      '  • Clear transitions\n' +
+      '  • Practical advice\n' +
+      '  • Conversational tone\n' +
+      '  • High audience retention\n' +
+      '  • Confident delivery\n' +
+      '  • Strong call-to-action\n' +
+      'Do NOT copy phrases, sentences, branding, scripts, or proprietary creative work.\n' +
+      'Create completely original content.\n' +
+      '\n' +
+      'Before writing the script:\n' +
+      '1. Analyze today\'s dashboard.\n' +
+      '2. Determine the single most important market story.\n' +
+      '3. Build the hook around that story.\n' +
+      '4. Use the Market Commentary as the primary narrative.\n' +
+      '5. Use all numbers from the dashboard only as supporting evidence.\n' +
+      '\n' +
+      'Avoid:\n' +
+      '  • generic AI wording\n' +
+      '  • clickbait\n' +
+      '  • financial advice\n' +
+      '  • exaggerated claims\n' +
+      '  • repeating yesterday\'s structure\n' +
+      '\n' +
+      'Generate:\n' +
+      '1. The strongest recommended hook.\n' +
+      '2. Ten alternative hooks.\n' +
+      '3. A complete 45–60 second Instagram Reel script.\n' +
+      '4. Suggested B-roll ideas.\n' +
+      '5. Suggested on-screen text.\n' +
+      '6. Suggested camera cuts.\n' +
+      '7. Caption.\n' +
+      '8. CTA.\n' +
+      '9. Relevant hashtags.\n' +
+      '10. Explain briefly WHY you chose this hook and why it is likely to perform well based on current educational real estate content patterns.'
+    ];
+
+    var text = context + preamble + '\n\n── Task ──\n' + bases[idx];
+
+    navigator.clipboard.writeText(text).then(function() {
+      btn.textContent = 'Copied';
+      btn.classList.add('copied');
+      setTimeout(function() { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 1800);
+    }).catch(function() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copied';
+      btn.classList.add('copied');
+      setTimeout(function() { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 1800);
+    });
   }
 
 </script>
