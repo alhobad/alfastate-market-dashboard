@@ -1,5 +1,5 @@
 {
-  "lastRun": "2026-07-10",
+  "lastRun": "2026-07-13",
   "bocRate": 2.25,
   "bocBankRate": 2.5,
   "canPrimeRate": 4.45,
@@ -32,7 +32,7 @@
       "postedVariable5": 4.45
     },
     "CIBC": {
-      "fixed5": 4.64,
+      "fixed5": 4.59,
       "variable5": 3.95,
       "postedFixed5": 6.49,
       "postedVariable5": 4.45
@@ -56,5 +56,5 @@
       "postedVariable5": null
     }
   },
-  "bankRatesDate": "2026-07-10"
+  "bankRatesDate": "2026-07-13"
 }
