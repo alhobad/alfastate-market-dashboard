@@ -1,5 +1,5 @@
 {
-  "lastRun": "2026-07-13",
+  "lastRun": "2026-07-14",
   "bocRate": 2.25,
   "bocBankRate": 2.5,
   "canPrimeRate": 4.45,
@@ -56,5 +56,5 @@
       "postedVariable5": null
     }
   },
-  "bankRatesDate": "2026-07-13"
+  "bankRatesDate": "2026-07-14"
 }
