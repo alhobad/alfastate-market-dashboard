@@ -7,7 +7,11 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
 const EMAIL_SUBJECT_OVERRIDE = process.env.EMAIL_SUBJECT || '';
 // Comma-separated recipient list; override with a TO_EMAILS secret without code changes.
-const TO_EMAILS = (process.env.TO_EMAILS || 'alhousainy.bader@gmail.com,info@alfastate.ca')
+// NOTE: Resend sandbox sender (onboarding@resend.dev) only delivers to the account
+// owner's address — the client receives the digest via a Gmail forwarding rule.
+// To email info@alfastate.ca directly, verify a domain at resend.com/domains,
+// set FROM_EMAIL to that domain, and add the client here or via TO_EMAILS.
+const TO_EMAILS = (process.env.TO_EMAILS || 'alhousainy.bader@gmail.com')
   .split(',').map(s => s.trim()).filter(Boolean);
 
 const DASHBOARD_URL = 'https://alfastate-market-dashboard.pages.dev/';
