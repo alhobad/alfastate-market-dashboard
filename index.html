@@ -393,19 +393,19 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 2px;
   }
 
   .sources-list a {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: baseline;
+    gap: 8px;
     color: var(--text-primary);
     text-decoration: none;
-    font-size: 14px;
-    padding: 12px;
-    border-radius: var(--radius-md);
-    background: var(--bg-card-alt);
+    font-size: 13px;
+    line-height: 1.45;
+    padding: 5px 6px;
+    border-radius: 6px;
     transition: background 0.15s ease;
   }
 
@@ -413,29 +413,43 @@
     background: var(--brand-accent-soft);
   }
 
+  .sources-list a:hover .source-name {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   .source-icon {
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background: var(--brand-primary);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 600;
-    margin-top: 1px;
+    align-self: center;
+  }
+
+  .source-text {
+    display: block;
+    min-width: 0;
   }
 
   .source-text .source-name {
     font-weight: 500;
-    display: block;
   }
 
   .source-text .source-date {
     color: var(--text-tertiary);
-    font-size: 12px;
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+
+  .source-text .source-date::before {
+    content: "· ";
   }
 
   /* Footer */
