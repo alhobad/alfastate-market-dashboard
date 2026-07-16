@@ -1,10 +1,19 @@
 name: Daily Market Update
 
+# SCHEDULE REMOVED 2026-07-16: the dashboard is now updated by the Claude scheduled
+# routine (see automation/alfastate-daily-market-update.md), which validates every
+# change through scripts/daily_update.py. Running both pipelines caused competing
+# commits to index.html (this workflow at 11:30 UTC, the routine at 11:00 UTC).
+# This workflow is retained dispatch-only for: notification email (uses repo
+# Resend secrets) and manual/diagnostic runs of the legacy Node updater.
+
 on:
-  schedule:
-    - cron: '30 11 * * 1-5'
   workflow_dispatch:
     inputs:
+      notify:
+        description: 'Send the daily "dashboard published" notification email'
+        type: boolean
+        default: false
       dry-run:
         description: 'Show changes without committing or pushing'
         type: boolean
@@ -18,7 +27,26 @@ permissions:
   contents: write
 
 jobs:
+  notify:
+    if: github.event.inputs.notify == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate date string
+        id: date
+        run: echo "stamp=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+      - name: Send publish notification
+        run: node scripts/send-email.js
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+          EMAIL_SUBJECT: "Alfastate dashboard published — ${{ steps.date.outputs.stamp }}"
+
   update:
+    if: github.event.inputs.notify != 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
