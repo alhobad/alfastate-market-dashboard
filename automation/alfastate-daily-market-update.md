@@ -9,6 +9,8 @@ commit, then copy the content into the scheduled task. If the two disagree, this
 only in the scheduled-task runtime copy (never commit it here — GitHub push protection
 will reject it). Resend email credentials live only in GitHub Actions repo secrets.
 
+Runtime frontmatter (scheduled-task copy only): `allowed-tools: WebSearch, Write(/tmp/*), Write(/private/tmp/*), Bash(python3 *), Bash(python3:*)` — pre-authorizes every tool the routine uses so runs never pause for permission prompts.
+
 Pipeline architecture:
     WebSearch (rates + news, verified sources)
       -> /tmp/values.json  (content payload, field definitions below)
